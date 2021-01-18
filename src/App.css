@@ -1,38 +1,46 @@
+@media screen and (min-width: 900px) {
+  .App {
+    background-image: url("background_skyscrapers_evenWider_upscaled.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    height:3700px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .App {
+    background-image: url("background_skyscrapers.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: right;
+    height:2000px;
+  }
+}
+@media screen and (min-width: 900px) {
+.App>div{
+  position: fixed;
+  top: 70px;
+}
 .App {
-  text-align: center;
+  width:80vw;
+  margin: 0 auto;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 900px) {
+  .App>div{
+    position: fixed;
+    top: 20px;
+    left: 0px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .App>div>img{
+    height: 110px;
   }
-  to {
-    transform: rotate(360deg);
   }
+footer {
+  width:100vw;
+  background-color: rgb(60, 60, 60);
+  height: 50px;
+}
+body {
+  background-color: rgb(60, 60, 60);
 }
