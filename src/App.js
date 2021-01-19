@@ -1,41 +1,20 @@
-import characterIdle from './magnusPixelOneX32.gif';
-import characterFlying from './magnusPixelRocketV2.gif';
-import characterFalling from './magnusPixelFalling.gif';
+import characterIdle from './images/magnusPixelOneX32.gif';
+import characterFlying from './images/magnusPixelRocketV2.gif';
+import characterFalling from './images/magnusPixelFalling.gif';
 import React, { useState, useEffect } from 'react';
+import Character from './Components/Character.jsx';
 import './App.css';
 
 function App() {
-
-  const [characterURI, setCharacterUri] = useState(characterIdle);
-
-  const [lastScroll, setLastScroll] = useState(0);
-  useEffect(() => {
-    window.addEventListener("scroll", function () {
-      var offset = window.pageYOffset;
-      if (offset > lastScroll) {
-        setCharacterUri(characterFalling)
-        setLastScroll(window.pageYOffset)
-      } else if (offset < lastScroll) {
-        setCharacterUri(characterFlying)
-        setLastScroll(window.pageYOffset)
-      }
-      setTimeout(function() {
-        setCharacterUri(characterIdle)
-        setLastScroll(window.pageYOffset)
-      }, 500);
-    }
-  ,[])})
-  
-
   return (
     <>
-    <div className="App">
-      <div>
-        <img src={characterURI} className="App-logo" alt="logo" />
+      <header>
+      </header>
+      <div className="App">
+        <Character characterIdle={characterIdle} characterFalling={characterFalling} characterFlying={characterFlying}></Character>
       </div>
-    </div>
-    <footer>
-    </footer>
+      <footer>
+      </footer>
     </>
   );
 }

@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: center;
-    height:3700px;
+    height: 3700px;
   }
 }
 @media screen and (max-width: 900px) {
@@ -12,35 +12,46 @@
     background-image: url("background_skyscrapers.png");
     background-repeat: no-repeat;
     background-size: auto 100%;
-    background-position: right;
-    height:2000px;
+    background-position: center;
+    height: 2000px;
   }
 }
 @media screen and (min-width: 900px) {
-.App>div{
-  position: fixed;
-  top: 70px;
-}
-.App {
-  width:80vw;
-  margin: 0 auto;
-}
+  .App {
+    margin: 0 auto;
+    box-shadow: 0px 0px 20px rgb(92, 92, 92);
+  }
+  @media screen and (min-width: 1500px) {
+    .App {
+      width: 80vw;
+    }
+  }
 }
 @media screen and (max-width: 900px) {
-  .App>div{
+  .App > div {
     position: fixed;
-    top: 20px;
+    top: 60px;
     left: 0px;
   }
-  .App>div>img{
+  .App > div > img {
     height: 110px;
   }
+  .App {
+    margin: 0 auto;
   }
+}
 footer {
-  width:100vw;
-  background-color: rgb(60, 60, 60);
+  width: 100vw;
+  background-color: rgb(29, 29, 29);
+  height: 50px;
+  z-index: -1;
+  position : relative;
+}
+header {
+  width: 100vw;
+  background-color: rgb(29, 29, 29);
   height: 50px;
 }
 body {
-  background-color: rgb(60, 60, 60);
+  background-color: rgb(29, 29, 29);
 }
