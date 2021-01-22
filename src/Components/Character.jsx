@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { CharacterAndText } from '../styles/StyledComponents.jsx';
-const Character = ({ characterIdle, characterFlying, characterFalling, getRefArray }) => {
+const Character = ({ characterIdle, characterFlying, characterFalling, getRefArray, getLanguagesRefArray }) => {
     const [characterURI, setCharacterUri] = useState(characterIdle);
     const [message, setMessage] = useState("Hi, my name is Magnus welcome to my portofolio, keep scrolling and I will take you through it :)");
 
     const [lastScroll, setLastScroll] = useState(0);
-    const [offset, setOffset] = useState(0);
     var debounce_timer;
     let isImgLoaded = useRef(false);
+    let isLanguagesLoaded = useRef(false);
 
     window.onscroll = () => {
         if (debounce_timer) {
@@ -18,22 +18,28 @@ const Character = ({ characterIdle, characterFlying, characterFalling, getRefArr
             setFlyingFalling();
         }, 1);
         setTimeout(function () {
-            if (offset > 400 && !isImgLoaded.current) {
+            if (window.pageYOffset > 400 && !isImgLoaded.current) {
                 isImgLoaded.current = true;
-                console.log(getRefArray())
                 fadeButtonsInn(unfade, getRefArray())
+            }
+        }, 100);
+        setTimeout(function () {
+            if (window.pageYOffset > 800 && !isLanguagesLoaded.current) {
+                isLanguagesLoaded.current = true;
+                fadeLanguagesInn(unfade, getLanguagesRefArray())
             }
         }, 100);
     }
 
     function setFlyingFalling() {
-        setOffset(window.pageYOffset);
-        if (offset > lastScroll) {
+        if (window.pageYOffset > lastScroll) {
             setCharacterUri(characterFalling);
             setLastScroll(window.pageYOffset);
-        } else if (offset < lastScroll) {
+            setMessage("...")
+        } else if (window.pageYOffset < lastScroll) {
             setCharacterUri(characterFlying);
             setLastScroll(window.pageYOffset);
+            setMessage("...")
         }
         setTimeout(function () {
             setCharacterUri(characterIdle);
@@ -41,23 +47,27 @@ const Character = ({ characterIdle, characterFlying, characterFalling, getRefArr
     }
 
     function handleScroll() {
-        setOffset(window.pageYOffset);
         setTimeout(function () {
-            if (offset < 200) {
-                setTimeout(() => {
-                    setMessage("Hi, my name is Magnus welcome to my portofolio, keep scrolling and I will take you through it :)");
-                }, 200);
-            }
-            else if (offset >= 300 && offset < 1000) {
-                setTimeout(() => {
-                    setMessage("Here are some of my favorite technologies");
-                }, 200);
-            }
-            else if (offset >= 1000) {
-                setTimeout(() => {
-                    setMessage("My languages, and fluent in both Norwegian and English ;)");
-                }, 200);
-            }
+                if (window.pageYOffset < 200) {
+                    setTimeout(() => {
+                        setMessage("Hi, my name is Magnus welcome to my portofolio, keep scrolling and I will take you through it :)");
+                    }, 200);
+                }
+                else if (window.pageYOffset >= 300 && window.pageYOffset < 1000) {
+                    setTimeout(() => {
+                        setMessage("Here are some of my favorite technologies");
+                    }, 200);
+                }
+                else if (window.pageYOffset >= 1000 && window.pageYOffset < 1500) {
+                    setTimeout(() => {
+                        setMessage("here are some of the the languages i know, im also fluent in both Norwegian and English :)");
+                    }, 200);
+                }
+                else if (window.pageYOffset >= 1500 && window.pageYOffset < 2000) {
+                    setTimeout(() => {
+                        setMessage("Here are some of my projects with coresponding github repo");
+                    }, 200);
+                }
             setCharacterUri(characterIdle);
         }, 500);
     }
@@ -108,6 +118,27 @@ function fadeButtonsInn(unfade, refArray) {
     setTimeout(function () {
         unfade(refArray[6].current);
     }, 380);
+}
+
+function fadeLanguagesInn(unfade, refArray) {
+    setTimeout(function () {
+        unfade(refArray[0].current);
+    }, 50);
+    setTimeout(function () {
+        unfade(refArray[1].current);
+    }, 130);
+    setTimeout(function () {
+        unfade(refArray[2].current);
+    }, 180);
+    setTimeout(function () {
+        unfade(refArray[3].current);
+    }, 230);
+    setTimeout(function () {
+        unfade(refArray[4].current);
+    }, 280);
+    setTimeout(function () {
+        unfade(refArray[5].current);
+    }, 330);
 }
 
 

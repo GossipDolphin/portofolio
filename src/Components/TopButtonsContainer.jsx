@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { TopButtonsSectionStyled } from '../styles/StyledComponents.jsx';
 import StandardButton from './StandardButton.jsx';
-import {Link} from 'react-scroll'
-
-
 
 const TopButtonsContainer = () => {
 
@@ -28,21 +25,11 @@ const TopButtonsContainer = () => {
 
     return (
         <TopButtonsSectionStyled>
-            <Link>
             <StandardButton refArray={refArray} value="kek" text="Contact"></StandardButton>
-            </Link>
-            <Link>
             <StandardButton refArray={refArray} text="Other Skills"></StandardButton>
-            </Link>
-            <Link>
             <StandardButton refArray={refArray} text="Projects"></StandardButton>
-            </Link>
-            <Link>
             <StandardButton refArray={refArray} text="Languages"></StandardButton>
-            </Link>
-            <Link to="Technologies" spy={true} smooth={true} duration="500">
             <StandardButton refArray={refArray} text="Technologies"></StandardButton>
-            </Link>
         </TopButtonsSectionStyled>
     )
 }

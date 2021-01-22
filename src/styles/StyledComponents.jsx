@@ -25,10 +25,15 @@ export const CharacterAndText = styled.div`
 `;
 
 export const StandardButtonStyled = styled.div`
+    display: flex;
     >p {
       text-align: center;
+      margin: 0 auto;
+      height: 20px;
+      padding-top: 13px;
     }
     opacity: 0;
+
 `;
 
 export const TopButtonsSectionStyled = styled.section`
@@ -39,21 +44,23 @@ export const TopButtonsSectionStyled = styled.section`
   max-width: 770px;
   margin: 0 auto;
   padding-top: 50px;
-  >*{
+  >a>*{
     border-radius: 4px;
-    align-self: center;
-    justify-self: center;
   }
-  >a{
+  >a>div{
     background-color:#4D0043;
     width: 150px;
     height: 50px;
     color: white;
-    margin: 0, 10px;
+    margin: 0;
     :hover {
       background-color: #640057;
       cursor: pointer;
     }
+  }
+  >*{
+    width: 150px;
+    height: 50px;
   }
   >:nth-child(1){
     grid-row: 5 / 6;
@@ -109,4 +116,39 @@ export const TechnologiesSectionStyled = styled.section`
     width: 120px;
     margin-bottom: 0;
   }
+`;
+
+export const LanguagesSectionStyled = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding-top: 350px;
+  margin-right: 100px;
+  >* {
+    max-height: 100px;
+    margin: 20px;
+    border-radius: 5px;
+    opacity: 0;
+  }
+`;
+
+export const ProjectsSectionStyled = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1000px;
+  margin-top: 100px;
+  padding-top: 350px;
+  margin-right: 100px;
+  >*{
+    margin: 20px;
+  }
+`;
+
+export const ProjectCardStyled = styled.article`
+height: 150px;
+width: 250px;
+  background-color: rgb(100, 0, 67, 0.4);
+  border-radius: 5px;
 `;
