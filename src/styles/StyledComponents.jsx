@@ -1,10 +1,36 @@
 import styled from 'styled-components';
 
 export const CharacterAndText = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    grid-template-rows: 200px 1fr;
     @media screen and (min-width: 900px) {
     position: fixed;
     top: 70px;
+    >:nth-child(3){
+      display: flex;
+      flex-direction: column;
+      grid-column: 1/2;
+      grid-row: 2/3;
+      width: 100px;
+      margin-left: 10px;
+      >a{
+        color: white;
+        text-align: center;
+        margin: 5px;
+        height: 25px;
+        border-radius: 3px;
+        background-color: #4D0043;
+        :hover{
+          cursor: pointer;
+          background-color: #640057;
+        }
+        >p{
+          font-size: 13px;
+          margin: 0;
+        }
+      }
+    }
     >img {
       width: 150px;
     }
@@ -138,8 +164,8 @@ export const ProjectsSectionStyled = styled.section`
   flex-wrap: wrap;
   margin: 0 auto;
   max-width: 1000px;
-  margin-top: 100px;
-  padding-top: 350px;
+  margin-top: 50px;
+  padding-top: 330px;
   margin-right: 100px;
   >*{
     margin: 20px;
@@ -147,8 +173,55 @@ export const ProjectsSectionStyled = styled.section`
 `;
 
 export const ProjectCardStyled = styled.article`
-height: 150px;
-width: 250px;
-  background-color: rgb(100, 0, 67, 0.4);
-  border-radius: 5px;
+height: 250px;
+width: 280px;
+  background-color: rgb(110, 0, 67, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+  :hover{
+    cursor: pointer;
+    background-color: rgb(100, 0, 67, 0.9);
+  }
+  >*{
+    margin: 0;
+  }
+  >h2{
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  >p{
+    margin-bottom: 10px;
+    height: 65px;
+  }
+  >img{
+    width: 170px;
+  }
+`;
+
+export const OtherSkillsContainerStyled = styled.section`
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 400px;
+  margin-right: 100px;
+`;
+
+export const OtherSkillCardStyled = styled.article`
+display: flex;
+flex-direction: column;
+text-align: center;
+align-items: center;
+color: white;
+background-color: #616161;
+border-radius: 5px;
+margin: 10px;
+width: 300px;
+height: 200px;
+
 `;

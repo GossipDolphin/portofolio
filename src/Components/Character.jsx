@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { CharacterAndText } from '../styles/StyledComponents.jsx';
-const Character = ({ characterIdle, characterFlying, characterFalling, getRefArray, getLanguagesRefArray }) => {
+import { Link } from 'react-scroll'
+
+const Character = ({ characterIdle, characterFlying, characterFalling, getRefArray, getLanguagesRefArray, getProjectsRefArray }) => {
     const [characterURI, setCharacterUri] = useState(characterIdle);
     const [message, setMessage] = useState("Hi, my name is Magnus welcome to my portofolio, keep scrolling and I will take you through it :)");
 
@@ -8,6 +10,7 @@ const Character = ({ characterIdle, characterFlying, characterFalling, getRefArr
     var debounce_timer;
     let isImgLoaded = useRef(false);
     let isLanguagesLoaded = useRef(false);
+    let isProjectsLoaded = useRef(false);
 
     window.onscroll = () => {
         if (debounce_timer) {
@@ -16,17 +19,23 @@ const Character = ({ characterIdle, characterFlying, characterFalling, getRefArr
         debounce_timer = window.setTimeout(function () {
             handleScroll();
             setFlyingFalling();
-        }, 1);
+        }, 5);
         setTimeout(function () {
             if (window.pageYOffset > 400 && !isImgLoaded.current) {
                 isImgLoaded.current = true;
-                fadeButtonsInn(unfade, getRefArray())
+                fadeLogosInn(unfade, getRefArray())
             }
         }, 100);
         setTimeout(function () {
             if (window.pageYOffset > 800 && !isLanguagesLoaded.current) {
                 isLanguagesLoaded.current = true;
                 fadeLanguagesInn(unfade, getLanguagesRefArray())
+            }
+        }, 100);
+        setTimeout(function () {
+            if (window.pageYOffset > 1500 && !isProjectsLoaded.current) {
+                isProjectsLoaded.current = true;
+                fadeProjectsInn(unfade, getProjectsRefArray())
             }
         }, 100);
     }
@@ -48,17 +57,17 @@ const Character = ({ characterIdle, characterFlying, characterFalling, getRefArr
 
     function handleScroll() {
         setTimeout(function () {
-                if (window.pageYOffset < 200) {
+                if (window.pageYOffset < 360) {
                     setTimeout(() => {
                         setMessage("Hi, my name is Magnus welcome to my portofolio, keep scrolling and I will take you through it :)");
                     }, 200);
                 }
-                else if (window.pageYOffset >= 300 && window.pageYOffset < 1000) {
+                else if (window.pageYOffset >= 360 && window.pageYOffset < 900) {
                     setTimeout(() => {
                         setMessage("Here are some of my favorite technologies");
                     }, 200);
                 }
-                else if (window.pageYOffset >= 1000 && window.pageYOffset < 1500) {
+                else if (window.pageYOffset >= 900 && window.pageYOffset < 1500) {
                     setTimeout(() => {
                         setMessage("here are some of the the languages i know, im also fluent in both Norwegian and English :)");
                     }, 200);
@@ -84,19 +93,36 @@ const Character = ({ characterIdle, characterFlying, characterFalling, getRefArr
             op += op * 0.1;
         }, 7);
     }
-
+    var duration = 500;
     return (
         <CharacterAndText>
             <img src={characterURI} className="App-logo" alt="logo" />
             <div>
                 <p id="message">{message}</p>
             </div>
+            <div>
+            <Link  to="Technologies" spy={true} smooth={true} duration={duration}>
+                <p>Technologies</p>
+            </Link>
+            <Link to="Languages" spy={true} smooth={true} duration={duration}>
+                <p>Languages</p>
+            </Link>
+            <Link to="Projects" spy={true} smooth={true} duration={duration}>
+                <p>Projects</p>
+            </Link>
+            <Link to="Projects" spy={true} smooth={true} duration={duration}>
+                <p>Other Skills</p>
+            </Link>
+            <Link to="Projects" spy={true} smooth={true} duration={duration}> 
+                <p>Contact</p>
+            </Link>
+            </div>
         </CharacterAndText>
     )
 }
 export default Character;
 
-function fadeButtonsInn(unfade, refArray) {
+function fadeLogosInn(unfade, refArray) {
     setTimeout(function () {
         unfade(refArray[0].current);
     }, 50);
@@ -139,6 +165,18 @@ function fadeLanguagesInn(unfade, refArray) {
     setTimeout(function () {
         unfade(refArray[5].current);
     }, 330);
+}
+
+function fadeProjectsInn(unfade, refArray) {
+    setTimeout(function () {
+        unfade(refArray[0].current);
+    }, 50);
+    setTimeout(function () {
+        unfade(refArray[1].current);
+    }, 130);
+    setTimeout(function () {
+        unfade(refArray[2].current);
+    }, 180);
 }
 
 

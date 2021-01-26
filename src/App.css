@@ -40,14 +40,14 @@
   }
 }
 footer {
-  width: 100vw;
+  width: 100%;
   background-color: rgb(29, 29, 29);
   height: 50px;
   z-index: -1;
   position : relative;
 }
 header {
-  width: 100vw;
+  width: 100%;
   background-color: rgb(29, 29, 29);
   height: 50px;
 }
